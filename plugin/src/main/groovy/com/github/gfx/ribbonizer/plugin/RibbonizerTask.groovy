@@ -21,9 +21,6 @@ class RibbonizerTask extends DefaultTask {
     //@OutputDirectory
     File outputDir
 
-    // `iconNames` includes: "@drawable/icon", "@mipmap/ic_launcher", etc.
-    Set<String> iconNames
-
     List<FilterBuilder> filterBuilders = []
 
     @TaskAction
@@ -34,7 +31,7 @@ class RibbonizerTask extends DefaultTask {
 
         def t0 = System.currentTimeMillis()
 
-        def names = new HashSet<String>(iconNames)
+        def names = new HashSet<String>()
         names.addAll(launcherIconNames)
 
         variant.sourceSets.stream()

@@ -3,7 +3,7 @@ package com.github.gfx.ribbonizer.plugin
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.api.ApplicationVariant
 import com.github.gfx.ribbonizer.FilterBuilder
-import com.github.gfx.ribbonizer.GreenRibbonBuilder
+import com.github.gfx.ribbonizer.RibbonBuilder
 import groovy.transform.CompileStatic
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -55,7 +55,7 @@ public class RibbonizerPlugin implements Plugin<Project> {
 
                 List<FilterBuilder> filterBuilders = extension.filterBuilders
                 if (filterBuilders.size() == 0) {
-                    filterBuilders = [new GreenRibbonBuilder() as FilterBuilder]
+                    filterBuilders = [new RibbonBuilder() as FilterBuilder]
                 }
 
                 def generatedResDir = getGeneratedResDir(project, variant)
@@ -65,7 +65,6 @@ public class RibbonizerPlugin implements Plugin<Project> {
                 def task = project.task(name, type: RibbonizerTask) as RibbonizerTask
                 task.variant = variant
                 task.outputDir = generatedResDir
-                task.iconNames = new HashSet<String>(extension.iconNames)
                 task.filterBuilders = filterBuilders
                 tasks.add(task)
 

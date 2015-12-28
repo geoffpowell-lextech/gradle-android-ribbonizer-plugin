@@ -1,12 +1,11 @@
 package com.github.gfx.ribbonizer.plugin;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
-
-import javax.imageio.ImageIO;
 
 public class Ribbonizer {
 
@@ -29,11 +28,6 @@ public class Ribbonizer {
     }
 
     public void process(Stream<Consumer<BufferedImage>> filters) {
-        filters.forEach(new Consumer<Consumer<BufferedImage>>() {
-            @Override
-            public void accept(Consumer<BufferedImage> filter) {
-                filter.accept(image);
-            }
-        });
+        filters.forEach(filter -> filter.accept(image));
     }
 }
