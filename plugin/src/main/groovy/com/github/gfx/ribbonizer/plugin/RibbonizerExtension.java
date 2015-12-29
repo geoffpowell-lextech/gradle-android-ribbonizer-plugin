@@ -1,8 +1,8 @@
-package com.lextech.internal.ribbonizer.plugin;
+package com.github.gfx.ribbonizer.plugin;
 
 import com.android.build.gradle.api.ApplicationVariant;
-import com.lextech.internal.ribbonizer.FilterBuilder;
-import com.lextech.internal.ribbonizer.RibbonBuilder;
+import com.github.gfx.ribbonizer.FilterBuilder;
+import com.github.gfx.ribbonizer.RibbonBuilder;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

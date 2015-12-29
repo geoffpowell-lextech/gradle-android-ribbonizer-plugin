@@ -1,4 +1,4 @@
-package com.lextech.internal.ribbonizer.plugin;
+package com.github.gfx.ribbonizer.plugin;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

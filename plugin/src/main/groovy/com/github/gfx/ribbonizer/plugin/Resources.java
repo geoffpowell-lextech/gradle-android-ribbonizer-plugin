@@ -1,6 +1,4 @@
-package com.lextech.internal.ribbonizer.plugin;
-
-import javax.xml.parsers.ParserConfigurationException;
+package com.github.gfx.ribbonizer.plugin;
 
 import org.xml.sax.SAXException;
 

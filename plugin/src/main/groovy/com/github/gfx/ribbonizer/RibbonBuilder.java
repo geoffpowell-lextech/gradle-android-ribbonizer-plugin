@@ -1,4 +1,4 @@
-package com.lextech.internal.ribbonizer;
+package com.github.gfx.ribbonizer;
 
 import com.android.build.gradle.api.ApplicationVariant;
 
