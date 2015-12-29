@@ -1,9 +1,10 @@
-package com.github.gfx.ribbonizer.plugin
+package com.lextech.internal.ribbonizer.plugin
 
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.api.ApplicationVariant
 import com.android.builder.model.SourceProvider
-import com.github.gfx.ribbonizer.FilterBuilder
+import com.lextech.internal.ribbonizer.FilterBuilder
+import com.lextech.internal.ribbonizer.plugin.Resources
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 

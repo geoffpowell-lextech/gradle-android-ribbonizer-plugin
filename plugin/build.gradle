@@ -1,8 +1,8 @@
-final REPOSITORY_URL = 'https://github.com/gfx/gradle-android-ribbonizer-plugin'
+final GROUP_ID = 'com.lextech.internal'
+final ARTIFACT_ID = 'ribbonizer'
+final VERSION = '0.1-SNAPSHOT'
 
-final GROUP_ID = 'com.github.gfx.ribbonizer'
-final ARTIFACT_ID = 'plugin'
-final VERSION = '0.5.0'
+final SNAPSHOT_URL = 'http://sonatype.lextech.com:8081/nexus/content/repositories/snapshots'
 
 buildscript {
     repositories {
@@ -17,9 +17,7 @@ repositories {
 }
 
 apply plugin: 'groovy'
-
 apply plugin: 'maven'
-apply plugin: 'com.bmuschko.nexus'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -34,72 +32,14 @@ dependencies {
     }
 }
 
-// artifact settings
-
-String git(String command) {
-    println "git $command"
-    def process = ["sh", "-c", "cd ${project.rootDir} ; git $command"].execute()
-    if (process.waitFor() != 0) {
-        throw new GradleException(process.err.text)
-    }
-    return process.in.text
-
-}
-
-task('releng') {
-    doLast {
-        def gitStatus = git("status --porcelain")
-        if (gitStatus.trim()) {
-            throw new GradleException("Changes found:\n$gitStatus")
-        }
-
-        println git("tag v$VERSION")
-        println git("push origin v$VERSION")
-    }
-}
-
-configurations {
-    mavenDeployer
-}
 
 uploadArchives {
-    repositories.mavenDeployer {
-        pom.groupId = GROUP_ID
-        pom.artifactId = ARTIFACT_ID
-        pom.version = VERSION
-    }
-}
-
-extraArchive {
-    sources = true
-    javadoc = true
-}
-
-modifyPom {
-    project {
-        name 'Ribbonizer plugin for Android'
-        description 'Adds ribbons to launcher icons for Android applications'
-        url REPOSITORY_URL
-        inceptionYear '2015'
-
-        scm {
-            url REPOSITORY_URL
-        }
-
-        licenses {
-            license {
-                name 'The Apache Software License, Version 2.0'
-                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                distribution 'repo'
-            }
-        }
-
-        developers {
-            developer {
-                id 'gfx'
-                name 'FUJI Goro'
-                email 'gfuji@cpan.org'
-            }
+    repositories{
+        mavenDeployer {
+            repository(url: SNAPSHOT_URL)
+            pom.groupId = GROUP_ID
+            pom.artifactId = ARTIFACT_ID
+            pom.version = VERSION
         }
     }
 }

@@ -1,6 +1,6 @@
-package com.github.gfx.ribbonizer.test
+package com.lextech.internal.ribbonizer.test
 
-import com.github.gfx.ribbonizer.plugin.Resources
+import com.lextech.internal.ribbonizer.plugin.Resources
 import spock.lang.Specification
 
 public class ResourcesTest extends Specification {

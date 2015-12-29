@@ -1,6 +1,6 @@
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
-apply plugin: 'com.github.gfx.ribbonizer'
+apply plugin: 'com.lextech.internal.ribbonizer'
 
 android {
     compileSdkVersion 23

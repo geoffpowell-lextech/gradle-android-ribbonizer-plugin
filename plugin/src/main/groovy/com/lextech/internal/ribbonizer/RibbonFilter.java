@@ -1,4 +1,4 @@
-package com.github.gfx.ribbonizer;
+package com.lextech.internal.ribbonizer;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -94,6 +94,6 @@ public class RibbonFilter implements Consumer<BufferedImage> {
     }
 
     Font getFont(int height) {
-        return new Font(fontName, fontStyle, Math.min(26, height/6));
+        return new Font(fontName, fontStyle, height / 6);
     }
 }
